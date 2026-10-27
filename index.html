@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Louvre After Dark — an interactive digital museum experience.">
+    <title>LAD — Louvre After Dark</title>
+    <meta name="theme-color" content="#080806">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+
+<body data-page="home">
+<div id="cursorGlow" aria-hidden="true"></div>
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<header class="navbar">
+    <a href="index.html" class="brand" aria-label="Louvre After Dark home">
+        <span class="brand-small">LAD</span>
+        <span class="brand-main">LOUVRE</span>
+        <span class="brand-sub">AFTER DARK</span>
+    </a>
+
+    <nav class="nav-links" id="primaryNavigation" aria-label="Primary navigation">
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="exhibitions.html">Exhibitions</a>
+        <a href="workshop.html">Workshop</a>
+        <a href="analysis.html">Analysis</a>
+    </nav>
+
+    <button class="night-toggle" id="nightToggle" type="button" aria-pressed="false">
+        ◐ AFTER DARK
+    </button>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
+            aria-expanded="false" aria-controls="primaryNavigation" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-light hero-light-one"></div>
+        <div class="hero-light hero-light-two"></div>
+
+        <div class="hero-content reveal">
+            <p class="eyebrow">THE MUSEUM CLOSES AT 18:00</p>
+            <h1>WHEN THE LIGHTS <span>GO OUT.</span></h1>
+            <p class="hero-description">
+                Explore a digital interpretation of the Louvre after closing time.
+                Walk through silent galleries, discover a twenty-four-work night collection and hear
+                the stories hidden behind them.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="exhibitions.html?tour=1" class="primary-btn">START GUIDED NIGHT TOUR <span>→</span></a>
+                <button class="ghost-btn" id="playIntro" type="button">PLAY INTRO</button>
+            </div>
+        </div>
+
+        <div class="hero-art reveal">
+            <div class="museum-frame">
+                <div class="painting-placeholder">
+                    <span>LA GIOCONDA</span>
+                    <div class="portrait-shape" aria-hidden="true">
+                        <div class="portrait-head"></div>
+                        <div class="portrait-body"></div>
+                    </div>
+                </div>
+                <div class="frame-label">
+                    LEONARDO DA VINCI
+                    <small>c. 1503 — 1519</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+            <span>SCROLL TO DISCOVER</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="section intro-section">
+        <div class="section-number reveal">01</div>
+        <div class="section-content reveal">
+            <p class="eyebrow">THE CONCEPT</p>
+            <h2>A museum that becomes <em>alive at night.</em></h2>
+            <p>
+                Louvre After Dark is an interactive web experience combining museum history,
+                storytelling, digital design and web technology. Instead of only reading
+                information, the visitor interacts with the artworks.
+            </p>
+        </div>
+    </section>
+
+    <section class="feature-section" aria-label="Experience features">
+        <article class="feature-card reveal">
+            <span class="card-number">01</span>
+            <div class="feature-visual" aria-hidden="true">
+                <svg class="feature-illustration explore-illustration" viewBox="0 0 320 170" role="presentation">
+                    <circle class="fi-moon" cx="58" cy="42" r="14" />
+                    <circle class="fi-star star-1" cx="88" cy="24" r="2.3" />
+                    <circle class="fi-star star-2" cx="118" cy="38" r="1.8" />
+                    <circle class="fi-star star-3" cx="152" cy="21" r="2" />
+                    <polygon class="fi-pyramid fi-pyramid-back" points="176,126 216,60 256,126" />
+                    <polygon class="fi-pyramid fi-pyramid-front" points="214,126 270,38 320,126" />
+                    <path class="fi-ground" d="M10 126 H310" />
+                    <path class="fi-dune" d="M18 126 C70 110, 118 110, 170 126" />
+                    <g class="fi-explorer">
+                        <circle class="fi-head" cx="68" cy="90" r="13" />
+                        <path class="fi-body-stroke" d="M68 104 L68 130 M68 114 L52 123 M68 114 L84 106 M68 130 L55 150 M68 130 L83 148" />
+                        <path class="fi-hand" d="M84 106 L120 92" />
+                        <path class="fi-beam" d="M120 92 L150 84" />
+                    </g>
+                </svg>
+            </div>
+            <h3>Explore</h3>
+            <p>Navigate a twenty-four-work collection across six themed museum worlds.</p>
+        </article>
+
+        <article class="feature-card reveal">
+            <span class="card-number">02</span>
+            <div class="feature-visual" aria-hidden="true">
+                <svg class="feature-illustration interact-illustration" viewBox="0 0 320 170" role="presentation">
+                    <rect class="fi-frame" x="186" y="26" width="86" height="104" rx="2" />
+                    <rect class="fi-canvas" x="198" y="38" width="62" height="80" rx="2" />
+                    <path class="fi-art-line" d="M207 58 H245" />
+                    <path class="fi-art-line" d="M207 73 H252" />
+                    <path class="fi-art-line" d="M207 88 H233" />
+                    <circle class="fi-hotspot-core" cx="229" cy="74" r="5" />
+                    <circle class="fi-hotspot-ring fi-hotspot-ring-1" cx="229" cy="74" r="12" />
+                    <circle class="fi-hotspot-ring fi-hotspot-ring-2" cx="229" cy="74" r="18" />
+                    <g class="fi-curator">
+                        <circle class="fi-head" cx="70" cy="88" r="13" />
+                        <path class="fi-body-stroke" d="M70 102 L70 132 M70 113 L55 124 M70 113 L94 97 M70 132 L56 149 M70 132 L82 148" />
+                        <path class="fi-hand" d="M94 97 C118 86, 140 81, 163 78" />
+                        <circle class="fi-hand-tip" cx="165" cy="78" r="3.5" />
+                    </g>
+                </svg>
+            </div>
+            <h3>Interact</h3>
+            <p>Inspect artworks and select hotspots to reveal details and stories.</p>
+        </article>
+
+        <article class="feature-card reveal">
+            <span class="card-number">03</span>
+            <div class="feature-visual" aria-hidden="true">
+                <svg class="feature-illustration listen-illustration" viewBox="0 0 320 170" role="presentation">
+                    <g class="fi-listener">
+                        <circle class="fi-head" cx="160" cy="62" r="22" />
+                        <path class="fi-headphones-band" d="M138 55 C142 30, 178 30, 182 55" />
+                        <rect class="fi-earcup" x="128" y="53" width="10" height="22" rx="4" />
+                        <rect class="fi-earcup" x="182" y="53" width="10" height="22" rx="4" />
+                        <path class="fi-body-stroke" d="M160 84 L160 132 M160 95 L138 108 M160 95 L182 108 M160 132 L144 152 M160 132 L176 152" />
+                    </g>
+                    <path class="fi-audio-wave wave-left-1" d="M76 78 C88 66, 88 54, 76 42" />
+                    <path class="fi-audio-wave wave-left-2" d="M58 88 C78 70, 78 50, 58 32" />
+                    <path class="fi-audio-wave wave-right-1" d="M244 42 C232 54, 232 66, 244 78" />
+                    <path class="fi-audio-wave wave-right-2" d="M262 32 C242 50, 242 70, 262 88" />
+                    <circle class="fi-sound-dot dot-1" cx="86" cy="58" r="2.5" />
+                    <circle class="fi-sound-dot dot-2" cx="234" cy="58" r="2.5" />
+                </svg>
+            </div>
+            <h3>Listen</h3>
+            <p>Use the built-in audio guide to hear selected artworks tell their story.</p>
+        </article>
+    </section>
+
+    <section class="experience-strip" aria-label="New interactive features">
+        <article class="experience-strip-item reveal">
+            <span>01</span>
+            <div><strong>GUIDED NIGHT TOUR</strong><p>Choose an eight-stop highlights route, four curated routes or the complete twenty-four-work Grand Night Tour.</p></div>
+        </article>
+        <article class="experience-strip-item reveal">
+            <span>02</span>
+            <div><strong>DEEP INSPECTION</strong><p>Open artworks fullscreen and magnify important details.</p></div>
+        </article>
+        <article class="experience-strip-item reveal">
+            <span>03</span>
+            <div><strong>NIGHT PASSPORT</strong><p>Discover all seventy-two hotspots, track visited artworks and build your own saved collection.</p></div>
+        </article>
+    </section>
+
+    <section class="collection-section">
+        <div class="collection-header reveal">
+            <div>
+                <p class="eyebrow">SELECTED WORKS</p>
+                <h2>Tonight's featured collection.</h2>
+            </div>
+            <a href="exhibitions.html" class="text-link">EXPLORE ALL 24 WORKS →</a>
+        </div>
+
+        <div class="art-grid">
+            <article class="art-card reveal" data-art="mona" tabindex="0" role="button"
+                     aria-label="Inspect Mona Lisa by Leonardo da Vinci">
+                <div class="art-image art-mona">
+                    <div class="art-symbol">ML</div>
+                    <div class="art-overlay"><span>CLICK TO INSPECT</span></div>
+                </div>
+                <div class="art-info">
+                    <p>ROOM 01</p>
+                    <h3>Mona Lisa</h3>
+                    <span>Leonardo da Vinci</span>
+                </div>
+            </article>
+
+            <article class="art-card reveal" data-art="victory" tabindex="0" role="button"
+                     aria-label="Inspect Winged Victory">
+                <div class="art-image art-victory">
+                    <div class="art-symbol">NV</div>
+                    <div class="art-overlay"><span>CLICK TO INSPECT</span></div>
+                </div>
+                <div class="art-info">
+                    <p>ROOM 02</p>
+                    <h3>Winged Victory</h3>
+                    <span>Ancient Greece</span>
+                </div>
+            </article>
+
+            <article class="art-card reveal" data-art="venus" tabindex="0" role="button"
+                     aria-label="Inspect Venus de Milo">
+                <div class="art-image art-venus">
+                    <div class="art-symbol">VM</div>
+                    <div class="art-overlay"><span>CLICK TO INSPECT</span></div>
+                </div>
+                <div class="art-info">
+                    <p>ROOM 03</p>
+                    <h3>Venus de Milo</h3>
+                    <span>Ancient Greece</span>
+                </div>
+            </article>
+            <article class="art-card reveal" data-art="liberty" tabindex="0" role="button" aria-label="Inspect Liberty Leading the People">
+                <div class="art-image" style="background-image:linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.18)),url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Eug%C3%A8ne_Delacroix_-_Le_28_Juillet._La_Libert%C3%A9_guidant_le_peuple.jpg?width=1200');background-size:cover;background-position:center;"><div class="art-symbol">LP</div><div class="art-overlay"><span>CLICK TO INSPECT</span></div></div>
+                <div class="art-info"><p>ROOM 04</p><h3>Liberty Leading the People</h3><span>Eugène Delacroix</span></div>
+            </article>
+
+            <article class="art-card reveal" data-art="medusa" tabindex="0" role="button" aria-label="Inspect The Raft of the Medusa">
+                <div class="art-image" style="background-image:linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.18)),url('https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Raft_of_the_Medusa_-_Louvre.jpg?width=1200');background-size:cover;background-position:center;"><div class="art-symbol">RM</div><div class="art-overlay"><span>CLICK TO INSPECT</span></div></div>
+                <div class="art-info"><p>ROOM 06</p><h3>The Raft of the Medusa</h3><span>Théodore Géricault</span></div>
+            </article>
+
+            <article class="art-card reveal" data-art="hammurabi" tabindex="0" role="button" aria-label="Inspect Code of Hammurabi">
+                <div class="art-image" style="background-image:linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.18)),url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Code_of_Hammurabi_Louvre_Museum.jpg?width=1000');background-size:cover;background-position:center;"><div class="art-symbol">CH</div><div class="art-overlay"><span>CLICK TO INSPECT</span></div></div>
+                <div class="art-info"><p>ROOM 10</p><h3>Code of Hammurabi</h3><span>Ancient Mesopotamia</span></div>
+            </article>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="reveal">
+            <p class="eyebrow">22:47 — PARIS</p>
+            <h2>The museum is empty.</h2>
+            <p>But the artworks are awake.</p>
+            <div class="hero-buttons"><a href="exhibitions.html?tour=1" class="ghost-btn">HIGHLIGHTS TOUR</a><a href="exhibitions.html?tour=grand" class="primary-btn">START GRAND NIGHT TOUR →</a></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>LAD / LOUVRE AFTER DARK</div>
+    <div>DIGITAL MUSEUM EXPERIENCE</div>
+    <div>2026</div>
+</footer>
+
+<div class="modal" id="artModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-window home-art-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close artwork information">×</button>
+        <p class="eyebrow" id="modalRoom">ROOM</p>
+        <h2 id="modalTitle">Artwork</h2>
+        <p class="modal-artist" id="modalArtist">Artist</p>
+
+        <div class="modal-artwork-preview" id="modalArtworkPreview" role="img" aria-label="Artwork preview"></div>
+
+        <div class="home-modal-facts" aria-label="Artwork facts">
+            <div><span>DATE</span><strong id="modalDate">—</strong></div>
+            <div><span>TYPE</span><strong id="modalType">—</strong></div>
+            <div><span>LOCATION</span><strong id="modalLocation">—</strong></div>
+        </div>
+
+        <div class="modal-divider"></div>
+        <p id="modalDescription">Description.</p>
+        <button class="primary-btn speak-btn" id="speakButton" type="button">▤ SHOW FULL STORY</button>
+    </div>
+</div>
+
+<div class="intro-overlay" id="introOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Louvre After Dark intro">
+    <button id="closeIntro" type="button">SKIP ×</button>
+    <div class="intro-sequence">
+        <p id="introTime">PARIS — 18:00</p>
+        <h2 id="introText">The Louvre closes its doors.</h2>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="ultra.js"></script>
+</body>
+</html>

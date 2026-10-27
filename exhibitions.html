@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore twenty-four masterpieces across six collections in the Louvre After Dark digital exhibition.">
+    <title>Exhibitions — Louvre After Dark</title>
+    <meta name="theme-color" content="#080806">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+
+<body data-page="exhibitions">
+<div id="cursorGlow" aria-hidden="true"></div>
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<header class="navbar">
+    <a href="index.html" class="brand" aria-label="Louvre After Dark home">
+        <span class="brand-small">LAD</span>
+        <span class="brand-main">LOUVRE</span>
+        <span class="brand-sub">AFTER DARK</span>
+    </a>
+
+    <nav class="nav-links" id="primaryNavigation" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="exhibitions.html" class="active" aria-current="page">Exhibitions</a>
+        <a href="workshop.html">Workshop</a>
+        <a href="analysis.html">Analysis</a>
+    </nav>
+
+    <button class="night-toggle" id="nightToggle" type="button" aria-pressed="false">◐ AFTER DARK</button>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
+            aria-expanded="false" aria-controls="primaryNavigation" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main>
+    <section class="page-hero exhibition-hero">
+        <p class="eyebrow reveal">02 / EXHIBITIONS</p>
+        <h1 class="reveal">The night <em>collection.</em></h1>
+        <p class="page-description reveal">
+            Twenty-four masterpieces. Six collections. Seventy-two discoverable details. Search, compare, inspect, follow the timeline or enter a curated Night Tour.
+        </p>
+        <div class="page-hero-actions reveal">
+            <button class="primary-btn" id="startGuidedTour" type="button">START HIGHLIGHTS TOUR <span>→</span></button>
+            <button class="ghost-btn" id="startGrandTour" type="button">GRAND TOUR · 24 WORKS <span>→</span></button>
+            <button class="ghost-btn ambience-toggle" id="ambienceToggle" type="button" aria-pressed="false">◌ AMBIENCE OFF</button>
+        </div>
+    </section>
+
+    <section class="collection-explorer" aria-labelledby="collectionExplorerTitle">
+        <div class="collection-explorer-heading reveal">
+            <div><p class="eyebrow">THE NIGHT ARCHIVE</p><h2 id="collectionExplorerTitle">Twenty-four works. <em>Six worlds.</em></h2></div>
+            <div class="collection-count" id="collectionResultCount">24 WORKS</div>
+        </div>
+        <div class="collection-toolbar reveal">
+            <label class="collection-search"><span>SEARCH COLLECTION</span><input id="collectionSearch" type="search" placeholder="Title, artist, era or room…" autocomplete="off"></label>
+            <div class="collection-filters" aria-label="Filter artworks">
+                <button class="active" type="button" data-collection-filter="all">ALL</button>
+                <button type="button" data-collection-filter="icons">ICONS</button>
+                <button type="button" data-collection-filter="french">FRENCH MASTERS</button>
+                <button type="button" data-collection-filter="european">EUROPEAN MASTERS</button>
+                <button type="button" data-collection-filter="renaissance">RENAISSANCE MASTERS</button>
+                <button type="button" data-collection-filter="ancient">ANCIENT WORLDS</button>
+                <button type="button" data-collection-filter="sculpture">SCULPTURE GALLERY</button>
+                <button type="button" data-collection-filter="favorites">★ MY COLLECTION</button>
+            </div>
+            <button class="random-artwork" id="randomArtwork" type="button">SURPRISE ME ↗</button>
+        </div>
+        <div class="collection-explorer-grid" id="collectionExplorerGrid"></div>
+    </section>
+
+    <section class="ultra-route-section reveal" aria-labelledby="ultraRoutesTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">CURATED NIGHT ROUTES</p><h2 id="ultraRoutesTitle">Choose a story, not just a room.</h2></div><span>4 ROUTES</span></div>
+        <div class="ultra-route-grid">
+            <button type="button" data-ultra-tour="renaissance"><span>01</span><strong>Renaissance After Dark</strong><small>Leonardo · Raphael · Veronese · Vermeer</small></button>
+            <button type="button" data-ultra-tour="power"><span>02</span><strong>Power & Revolution</strong><small>Empire · revolt · survival · politics</small></button>
+            <button type="button" data-ultra-tour="ancient"><span>03</span><strong>Ancient Worlds</strong><small>Egypt · Greece · Babylon · Assyria · Persia</small></button>
+            <button type="button" data-ultra-tour="sculpture"><span>04</span><strong>Sculpture After Dark</strong><small>Marble · monument · movement · myth</small></button>
+        </div>
+    </section>
+
+    <section class="compare-lab reveal" id="compareLab" aria-labelledby="compareTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">CURATOR COMPARE LAB</p><h2 id="compareTitle">Put two masterpieces face to face.</h2></div><button class="ghost-btn" id="swapCompare" type="button">SWAP ↔</button></div>
+        <div class="compare-selectors"><label>LEFT WORK<select id="compareLeft"></select></label><span>VS</span><label>RIGHT WORK<select id="compareRight"></select></label></div>
+        <div class="compare-stage"><article class="compare-art-card" id="compareLeftCard"></article><div class="compare-vs">VS</div><article class="compare-art-card" id="compareRightCard"></article></div>
+    </section>
+
+    <section class="ultra-timeline reveal" aria-labelledby="ultraTimelineTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">TIME MACHINE</p><h2 id="ultraTimelineTitle">Travel through more than two thousand years.</h2></div><span>CLICK ANY WORK</span></div>
+        <div class="timeline-scale"><span>ANCIENT</span><span>RENAISSANCE</span><span>1800s</span></div>
+        <div class="ultra-timeline-rail" id="ultraTimelineRail"></div>
+    </section>
+
+    <section class="museum-map reveal" id="museumMap">
+        <div class="map-header">
+            <div>
+                <p class="eyebrow">MUSEUM MAP</p>
+                <h2>Select a room.</h2>
+            </div>
+            <div class="map-status"><span></span>NIGHT ACCESS ACTIVE</div>
+        </div>
+
+        <div class="museum-passport" aria-label="Night collection discovery progress">
+            <div>
+                <span class="passport-label">NIGHT PASSPORT</span>
+                <strong id="passportStatus">0 / 72 DETAILS DISCOVERED</strong><small id="passportVisited">0 / 24 ARTWORKS VISITED</small>
+            </div>
+            <div class="passport-progress" role="progressbar" aria-valuemin="0" aria-valuemax="72" aria-valuenow="0" id="passportProgress">
+                <div class="passport-progress-fill" id="passportProgressFill"></div>
+            </div>
+            <button class="passport-reset" id="resetPassport" type="button">RESET DISCOVERY</button>
+        </div>
+
+        <div class="rooms-navigation maxed-rooms-navigation" id="roomsNavigation" aria-label="Select exhibition room"></div>
+    </section>
+
+    <section class="ultra-wing-section reveal" aria-labelledby="wingGuideTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">DIGITAL WING GUIDE</p><h2 id="wingGuideTitle">Move through Denon, Sully and Richelieu.</h2></div><span>NOT A SCALE FLOOR PLAN</span></div>
+        <div class="ultra-wing-guide" id="ultraWingGuide"></div>
+    </section>
+
+    <section class="ultra-achievements reveal" aria-labelledby="achievementTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">NIGHT PASSPORT 2.0</p><h2 id="achievementTitle">Your visit has milestones.</h2></div><span id="ultraAchievementCount">0/8 UNLOCKED</span></div>
+        <div class="achievement-grid" id="ultraAchievementGrid"></div>
+    </section>
+
+    <section class="virtual-room reveal" id="virtualRoom" aria-label="Virtual exhibition room">
+        <div class="room-atmosphere" aria-hidden="true"></div>
+        <div class="ceiling-light ceiling-light-left" aria-hidden="true"></div>
+        <div class="ceiling-light ceiling-light-right" aria-hidden="true"></div>
+
+        <div class="room-wall back-wall">
+            <div class="room-title">
+                <span id="roomNumber">ROOM 01</span>
+                <h2 id="roomName">Salle des États</h2>
+            </div>
+
+            <div class="gallery-frame" id="galleryFrame">
+                <div class="gallery-artwork" id="galleryArtwork" role="img"
+                     aria-label="Mona Lisa — Leonardo da Vinci"></div>
+                <div class="museum-plaque">
+                    <strong id="galleryTitle">MONA LISA</strong>
+                    <small id="galleryArtist">LEONARDO DA VINCI</small>
+                </div>
+            </div>
+
+            <button class="inspect-button" id="inspectArtwork" type="button">PRESS TO INSPECT</button>
+        </div>
+
+        <div class="side-wall left-wall" aria-hidden="true"></div>
+        <div class="side-wall right-wall" aria-hidden="true"></div>
+
+        <div class="museum-floor" aria-hidden="true">
+            <div class="floor-line floor-line-one"></div>
+            <div class="floor-line floor-line-two"></div>
+            <div class="floor-line floor-line-three"></div>
+        </div>
+    </section>
+
+    <section class="hotspot-information" id="hotspotInfo" aria-live="polite">
+        <div>
+            <p class="eyebrow">ARTWORK DETAIL</p>
+            <h2 id="hotspotTitle">Select a detail</h2>
+            <p id="hotspotText">Explore the artwork by selecting one of the highlighted points.</p>
+        </div>
+        <div class="hotspot-discovery-state" id="hotspotDiscoveryState" aria-live="polite">0 / 3 details found in this room</div>
+    </section>
+
+    <section class="room-information">
+        <div class="room-info-main reveal">
+            <p class="eyebrow">CURRENT EXHIBITION</p>
+            <h2 id="infoTitle">Mona Lisa</h2>
+            <p id="infoText">
+                Leonardo da Vinci's portrait is one of the most recognised paintings in the world.
+            </p>
+        </div>
+
+        <div class="room-facts reveal">
+            <div><span>ARTIST</span><strong id="factArtist">Leonardo da Vinci</strong></div>
+            <div><span>DATE</span><strong id="factDate">c. 1503–1519</strong></div>
+            <div><span>TYPE</span><strong id="factType">Oil painting</strong></div>
+            <div><span>ERA</span><strong id="factEra">Renaissance</strong></div>
+            <div><span>WING</span><strong id="factWing">Denon Wing</strong></div>
+        </div>
+    </section>
+
+    <section class="experience-explainer section">
+        <div class="section-number reveal">02</div>
+        <div class="section-content reveal">
+            <p class="eyebrow">HOW TO EXPERIENCE THE COLLECTION</p>
+            <h2>Look closer than a <em>normal gallery visit.</em></h2>
+            <p>
+                Open an artwork, listen to the guide, enter fullscreen inspection mode and discover all seventy-two details across twenty-four works.
+                Your Night Passport remembers what you have explored on this device.
+            </p>
+        </div>
+    </section>
+    <section class="collection-sources reveal">
+        <div><p class="eyebrow">SOURCES & IMAGE CREDITS</p><h2>Built from museum research, not invented facts.</h2></div>
+        <p>Artwork information should be cross-checked with the Musée du Louvre collection catalogue. All twenty-four artwork preview images use Wikimedia Commons file redirects; individual photographs may have their own attribution requirements. Keep this section in the final project so the research process stays visible.</p>
+        <div class="source-links"><a href="https://www.louvre.fr/en" target="_blank" rel="noopener noreferrer">MUSÉE DU LOUVRE ↗</a><a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">WIKIMEDIA COMMONS ↗</a></div>
+    </section>
+</main>
+
+<footer>
+    <div>LAD / EXHIBITIONS</div>
+    <div>NIGHT COLLECTION</div>
+    <div>2026</div>
+</footer>
+
+<!-- ARTWORK INFORMATION MODAL -->
+<div class="modal" id="artModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-window inspect-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close artwork information">×</button>
+
+        <div class="inspect-layout">
+            <div class="inspect-visual">
+                <div class="inspect-artwork-image" id="modalArtworkImage" role="img"></div>
+                <div class="inspect-image-caption">
+                    <span>NIGHT COLLECTION</span>
+                    <span id="modalImageNumber">01</span>
+                </div>
+            </div>
+
+            <div class="inspect-content">
+                <p class="eyebrow" id="modalRoom">ROOM 01</p>
+                <h2 id="modalTitle">Mona Lisa</h2>
+                <p class="modal-artist" id="modalArtist">Leonardo da Vinci</p>
+
+                <div class="inspect-metadata">
+                    <div><span>DATE</span><strong id="modalDate">c. 1503–1519</strong></div>
+                    <div><span>TYPE</span><strong id="modalType">Oil painting</strong></div>
+                    <div><span>LOCATION</span><strong id="modalLocation">Salle des États</strong></div>
+                </div>
+
+                <div class="modal-divider"></div>
+                <p class="inspect-description" id="modalDescription">Artwork description.</p>
+
+                <div class="audio-guide">
+                    <div class="audio-guide-header">
+                        <div>
+                            <span class="audio-label">AUDIO GUIDE</span>
+                            <strong id="audioStatus" aria-live="polite">READY TO PLAY</strong>
+                        </div>
+                        <span class="audio-symbol" aria-hidden="true">◉</span>
+                    </div>
+
+                    <div class="audio-voice-badge" aria-label="Museum guide audio source">
+                        <span>VOICE</span>
+                        <strong id="audioVoiceLabel">CLEAR GUIDE</strong>
+                    </div>
+
+                    <div class="audio-controls-row">
+                        <div class="audio-controls" aria-label="Audio guide controls">
+                            <button id="audioPlay" type="button" aria-label="Play or resume audio guide">▶</button>
+                            <button id="audioPause" type="button" aria-label="Pause audio guide">❚❚</button>
+                            <button id="audioStop" type="button" aria-label="Stop audio guide">■</button>
+                        </div>
+                        <button class="audio-transcript-toggle" id="audioTranscriptToggle" type="button" aria-expanded="false">CC SHOW TRANSCRIPT</button>
+                    </div>
+
+                    <div class="audio-progress" id="audioProgress" role="progressbar"
+                         aria-label="Audio guide progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="audio-progress-fill" id="audioProgressFill"></div>
+                    </div>
+
+                    <div class="audio-transcript" id="audioTranscript" hidden>
+                        <span class="audio-transcript-label">LIVE TRANSCRIPT</span>
+                        <p id="audioTranscriptText"></p>
+                    </div>
+                </div>
+
+                <button class="favorite-artwork-button" id="favoriteArtwork" type="button" aria-pressed="false">☆ SAVE TO MY COLLECTION</button>
+
+                <button class="inspect-details-button" id="exploreDetails" type="button">
+                    OPEN FULLSCREEN INSPECTION <span>↗</span>
+                </button>
+
+                <button class="tour-modal-next" id="tourModalNext" type="button" hidden>
+                    CONTINUE GUIDED TOUR <span>→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FULLSCREEN ARTWORK INSPECTION -->
+<div class="fullscreen-inspection" id="fullscreenInspection" aria-hidden="true">
+    <div class="inspection-topbar">
+        <div>
+            <span class="eyebrow">DEEP INSPECTION</span>
+            <strong id="inspectionTitle">Mona Lisa</strong>
+        </div>
+        <div class="inspection-actions">
+            <span class="inspection-hint">MOUSE: MAGNIFY · TOUCH: TAP + DRAG · KEYS: + − 0</span>
+            <div class="inspection-zoom-controls"><button id="inspectionZoomOut" type="button" aria-label="Zoom out">−</button><strong id="inspectionZoomValue">100%</strong><button id="inspectionZoomIn" type="button" aria-label="Zoom in">+</button><button id="inspectionZoomReset" type="button">RESET</button></div>
+            <button id="closeInspection" type="button" aria-label="Close fullscreen inspection">CLOSE ×</button>
+        </div>
+    </div>
+
+    <div class="inspection-stage" id="inspectionStage">
+        <div class="inspection-image" id="inspectionImage" role="img" aria-label="Artwork inspection image">
+            <div class="inspection-lens" id="inspectionLens" aria-hidden="true"></div>
+            <div class="inspection-hotspots" id="inspectionHotspots"></div>
+        </div>
+    </div>
+
+    <div class="inspection-detail-panel" id="inspectionDetailPanel" aria-live="polite">
+        <span id="inspectionDetailNumber">DETAIL 01</span>
+        <h2 id="inspectionDetailTitle">Select a highlighted detail.</h2>
+        <p id="inspectionDetailText">Use the numbered points to inspect the artwork more closely.</p>
+    </div>
+</div>
+
+<!-- GUIDED TOUR DOCK -->
+<div class="guided-tour-dock" id="guidedTourDock" aria-hidden="true">
+    <div class="guided-tour-progress">
+        <span id="guidedTourStep">STOP 01 / 08</span>
+        <strong id="guidedTourTitle">Mona Lisa</strong>
+    </div>
+    <div class="guided-tour-line"><span id="guidedTourLineFill"></span></div>
+    <div class="guided-tour-actions">
+        <button id="guidedTourStop" type="button">END TOUR</button>
+        <button id="guidedTourNext" type="button">NEXT ARTWORK →</button>
+    </div>
+</div>
+
+<div class="tour-complete" id="tourComplete" aria-hidden="true">
+    <div class="tour-complete-panel" role="dialog" aria-modal="true" aria-labelledby="tourCompleteMode">
+        <span class="eyebrow">LOUVRE AFTER DARK</span>
+        <h2 id="tourCompleteMode">NIGHT TOUR COMPLETE</h2>
+        <p>Your visit has been added to the Night Passport.</p>
+        <div class="tour-complete-stats">
+            <div><strong id="tourCompleteVisited">0/24</strong><span>ARTWORKS VISITED</span></div>
+            <div><strong id="tourCompleteDetails">0/72</strong><span>DETAILS DISCOVERED</span></div>
+            <div><strong id="tourCompleteFavorites">0</strong><span>SAVED WORKS</span></div>
+            <div><strong id="tourCompleteTime">1 MIN</strong><span>VISIT TIME</span></div>
+        </div>
+        <div class="tour-complete-actions"><button class="ghost-btn" id="tourCompleteClose" type="button">CLOSE</button><button class="primary-btn" id="tourCompletePassport" type="button">VIEW NIGHT PASSPORT →</button></div>
+    </div>
+</div>
+
+<div class="sr-only" id="museumLiveStatus" aria-live="polite"></div>
+
+<script src="script.js"></script>
+<script src="ultra.js"></script>
+</body>
+</html>
