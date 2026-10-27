@@ -1,0 +1,74 @@
+LOUVRE AFTER DARK — MAXED V3 FEATURE LIST
+=========================================
+
+24 ARTWORKS / 72 DETAILS / 6 COLLECTIONS
+
+LOUVRE ICONS
+01 Mona Lisa
+02 Winged Victory of Samothrace
+03 Venus de Milo
+
+FRENCH MASTERS
+04 Liberty Leading the People
+05 The Coronation of Napoleon
+06 The Raft of the Medusa
+13 The Oath of the Horatii
+14 The Intervention of the Sabine Women
+15 Grande Odalisque
+18 The Cheat with the Ace of Diamonds
+
+EUROPEAN MASTERS
+07 The Wedding Feast at Cana
+08 The Lacemaker
+09 The Astronomer
+
+ANCIENT WORLDS
+10 Code of Hammurabi
+11 The Seated Scribe
+12 Great Sphinx of Tanis
+
+SCULPTURE GALLERY
+16 Psyche Revived by Cupid's Kiss
+17 Dying Slave
+
+EXHIBITION SYSTEMS
+- Searchable collection archive
+- Five collection filters
+- My Collection favorites
+- Surprise Me random artwork
+- 18-room dynamic selector
+- 54-detail Night Passport
+- Visited-artwork tracking
+- 8-stop Highlights Tour
+- 24-stop Grand Night Tour
+- Tour completion statistics
+- Fullscreen deep inspection
+- Desktop magnifier
+- Mobile tap-to-zoom and drag/pan
+- Keyboard zoom controls
+
+AUDIO V3
+- Slower 0.74 speech rate
+- Sentence-by-sentence narration for clearer diction
+- Automatic best-English-voice selection
+- Live transcript with active sentence highlighting
+- Play / pause / resume / stop
+- Audio progress
+- Automatic studio MP3 support when assets/audio/<art-id>.mp3 exists
+- 18 original + 6 addendum ready-to-record scripts in VOICE-SCRIPTS.txt
+
+WORKSHOP / ANALYSIS
+- Restoration simulation + before/after slider
+- Restoration accuracy score
+- Expanded conservation quiz
+- User testing saved locally
+- Live user-test statistics
+- CSV export
+- Project analysis and Problem → Solution documentation
+
+RESPONSIVE / ACCESSIBILITY
+- Mobile navigation
+- Keyboard controls
+- ARIA live status and progress attributes
+- Escape closing for overlays
+- Reduced-motion support

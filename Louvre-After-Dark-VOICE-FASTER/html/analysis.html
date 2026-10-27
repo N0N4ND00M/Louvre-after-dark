@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project analysis and development process behind Louvre After Dark.">
+    <title>Analysis — Louvre After Dark</title>
+    <meta name="theme-color" content="#080806">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body data-page="analysis">
+<div id="cursorGlow" aria-hidden="true"></div>
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<header class="navbar">
+    <a href="index.html" class="brand" aria-label="Louvre After Dark home">
+        <span class="brand-small">LAD</span>
+        <span class="brand-main">LOUVRE</span>
+        <span class="brand-sub">AFTER DARK</span>
+    </a>
+
+    <nav class="nav-links" id="primaryNavigation" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="exhibitions.html">Exhibitions</a>
+        <a href="workshop.html">Workshop</a>
+        <a href="analysis.html" class="active" aria-current="page">Analysis</a>
+    </nav>
+
+    <button class="night-toggle" id="nightToggle" type="button" aria-pressed="false">◐ AFTER DARK</button>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
+            aria-expanded="false" aria-controls="primaryNavigation" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main>
+    <section class="page-hero">
+        <p class="eyebrow reveal">04 / PROJECT ANALYSIS</p>
+        <h1 class="reveal">From idea <em>to prototype.</em></h1>
+        <p class="page-description reveal">
+            The purpose, technology, development process, risks and testing behind Louvre After Dark.
+        </p>
+    </section>
+
+    <section class="stats-section" aria-label="Project facts">
+        <div class="stat-card reveal">
+            <strong class="counter" data-target="4">0</strong>
+            <span>CONNECTED PAGES</span>
+        </div>
+        <div class="stat-card reveal">
+            <strong class="counter" data-target="24">0</strong>
+            <span>FEATURED ARTWORKS</span>
+        </div>
+        <div class="stat-card reveal">
+            <strong class="counter" data-target="8">0</strong>
+            <span>PROJECT PHASES</span>
+        </div>
+        <div class="stat-card reveal">
+            <strong class="counter" data-target="100">0</strong>
+            <span>% SOLO PROJECT</span>
+        </div>
+    </section>
+
+    <section class="analysis-grid">
+        <article class="analysis-card reveal">
+            <span>01</span>
+            <h2>Purpose</h2>
+            <p>
+                The project investigates how web development can create a more interactive digital
+                museum experience and make historical artworks feel more engaging to explore.
+            </p>
+        </article>
+
+        <article class="analysis-card reveal">
+            <span>02</span>
+            <h2>Technology</h2>
+            <p>
+                HTML structures the pages, CSS creates the visual identity and responsive layout,
+                while JavaScript controls a searchable twenty-four-work collection, rooms, modals, hotspots, tours, speech, local progress, user testing and workshop tools.
+            </p>
+        </article>
+
+        <article class="analysis-card reveal">
+            <span>03</span>
+            <h2>User experience</h2>
+            <p>
+                The interface is designed to feel cinematic without hiding the navigation. Interaction,
+                readable information, keyboard support and mobile behaviour are developed together.
+            </p>
+        </article>
+
+        <article class="analysis-card reveal">
+            <span>04</span>
+            <h2>Main risk</h2>
+            <p>
+                The biggest risk is making the project too large for one person. The final prototype therefore uses one reusable interaction system across twenty-four artworks instead of building every room separately.
+            </p>
+        </article>
+    </section>
+
+    <section class="timeline-section">
+        <div class="timeline-heading reveal">
+            <p class="eyebrow">DEVELOPMENT</p>
+            <h2>Project phases.</h2>
+        </div>
+
+        <div class="project-timeline">
+            <div class="timeline-item reveal">
+                <span>WEEK 36–37</span>
+                <div><h3>Idea, purpose & research</h3><p>Define the concept, question, scope and collect relevant sources.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 38–40</span>
+                <div><h3>Design & structure</h3><p>Build the visual identity, navigation, layouts and connected HTML pages.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 41–43</span>
+                <div><h3>Programming & interaction</h3><p>Develop room changes, artwork information, animation, hotspots and audio features.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 44–45</span>
+                <div><h3>Testing & improvements</h3><p>Find technical problems and improve the design and user experience.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 46–47</span>
+                <div><h3>Refinement</h3><p>Improve existing features, responsiveness and consistency instead of expanding the scope.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 48–49</span>
+                <div><h3>Documentation</h3><p>Document the process, techniques, problems, solutions and development decisions.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 50–52</span>
+                <div><h3>Final development</h3><p>Complete the website, fix remaining issues and connect the result to the project question.</p></div>
+            </div>
+            <div class="timeline-item reveal">
+                <span>WEEK 02</span>
+                <div><h3>Final review & presentation</h3><p>Complete the report, test the full experience and prepare the final presentation and opposition.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testing-section">
+        <div class="testing-copy reveal">
+            <p class="eyebrow">USER TESTING</p>
+            <h2>How will “better experience” be evaluated?</h2>
+            <p>
+                The final version should be tested by several users. Their feedback can be used to evaluate
+                whether navigation is clear and whether hotspots, the audio guide and the workshop actually
+                make the artworks more interesting and understandable to explore.
+            </p>
+        </div>
+        <div class="testing-questions reveal">
+            <div><span>01</span><p>Was the navigation clear?</p></div>
+            <div><span>02</span><p>Did hotspots make the artworks easier to explore?</p></div>
+            <div><span>03</span><p>Did the audio guide add value?</p></div>
+            <div><span>04</span><p>Which interaction felt most useful?</p></div>
+        </div>
+    </section>
+
+    <section class="process-decisions">
+        <div class="collection-header reveal">
+            <div>
+                <p class="eyebrow">PROBLEM → SOLUTION</p>
+                <h2>Development decisions.</h2>
+            </div>
+        </div>
+
+        <div class="decision-grid">
+            <article class="decision-card reveal">
+                <span>01 / AUDIO</span>
+                <h3>From a visual button to a real guide.</h3>
+                <p>The first audio controls were only visual. JavaScript was added for play, pause, resume, stop, status and progress, with slower sentence-by-sentence narration, a live transcript and automatic support for studio MP3 recordings when they are added.</p>
+            </article>
+            <article class="decision-card reveal">
+                <span>02 / MOBILE</span>
+                <h3>Navigation could not disappear.</h3>
+                <p>The desktop links originally vanished on smaller screens. A keyboard-accessible mobile menu was added so all four pages remain reachable on phones and tablets.</p>
+            </article>
+            <article class="decision-card reveal">
+                <span>03 / SCOPE</span>
+                <h3>Reusable systems instead of copied pages.</h3>
+                <p>The collection expanded to twenty-four works, but every artwork uses the same data-driven room, hotspot, narration, inspection, favorites and Night Passport systems. This keeps the project scalable.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="user-test-demo">
+        <div class="testing-copy reveal">
+            <p class="eyebrow">USER TEST PROTOTYPE</p>
+            <h2>Turn the question into measurable feedback.</h2>
+            <p>This local testing tool stores anonymous responses only in this browser, calculates live summary statistics and can export the results as CSV for the report. Nothing is sent to a server.</p>
+        </div>
+
+        <form class="user-test-form reveal" id="userTestForm">
+            <fieldset>
+                <legend>HOW MUCH DID THE INTERACTIONS IMPROVE THE EXPERIENCE?</legend>
+                <div class="rating-row">
+                    <label><input type="radio" name="experience" value="1"><span>1</span></label>
+                    <label><input type="radio" name="experience" value="2"><span>2</span></label>
+                    <label><input type="radio" name="experience" value="3"><span>3</span></label>
+                    <label><input type="radio" name="experience" value="4"><span>4</span></label>
+                    <label><input type="radio" name="experience" value="5"><span>5</span></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>WHICH FEATURE HELPED MOST?</legend>
+                <div class="feature-choice-row">
+                    <label><input type="radio" name="feature" value="Hotspots"><span>Hotspots</span></label>
+                    <label><input type="radio" name="feature" value="Audio guide"><span>Audio guide</span></label>
+                    <label><input type="radio" name="feature" value="Deep inspection"><span>Deep inspection</span></label>
+                    <label><input type="radio" name="feature" value="Workshop"><span>Workshop</span></label>
+                </div>
+            </fieldset>
+
+            <div class="test-live-stats"><div><strong id="testResponseCount">0</strong><span>RESPONSES</span></div><div><strong id="testAverageScore">—</strong><span>AVG / 5</span></div><div><strong id="testTopFeature">—</strong><span>TOP FEATURE</span></div></div>
+            <button class="primary-btn" type="submit">RECORD TEST RESPONSE</button>
+            <div class="test-data-actions"><button class="ghost-btn" id="exportTestCsv" type="button">EXPORT CSV</button><button class="ghost-btn" id="clearTestData" type="button">CLEAR LOCAL DATA</button></div>
+            <p id="userTestResult" aria-live="polite">No response recorded yet.</p>
+        </form>
+    </section>
+
+    <section class="tech-section">
+        <p class="eyebrow reveal">TECHNOLOGY STACK</p>
+        <div class="tech-list reveal">
+            <div>HTML</div>
+            <div>CSS</div>
+            <div>JAVASCRIPT</div>
+            <div>UX / UI</div>
+            <div>RESEARCH</div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>LAD / ANALYSIS</div>
+    <div>PROJECT DOCUMENTATION</div>
+    <div>2026</div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/ultra.js"></script>
+</body>
+</html>

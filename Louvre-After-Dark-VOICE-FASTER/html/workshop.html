@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive conservation workshop in Louvre After Dark.">
+    <title>Workshop — Louvre After Dark</title>
+    <meta name="theme-color" content="#080806">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body data-page="workshop">
+<div id="cursorGlow" aria-hidden="true"></div>
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<header class="navbar">
+    <a href="index.html" class="brand" aria-label="Louvre After Dark home">
+        <span class="brand-small">LAD</span>
+        <span class="brand-main">LOUVRE</span>
+        <span class="brand-sub">AFTER DARK</span>
+    </a>
+
+    <nav class="nav-links" id="primaryNavigation" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="exhibitions.html">Exhibitions</a>
+        <a href="workshop.html" class="active" aria-current="page">Workshop</a>
+        <a href="analysis.html">Analysis</a>
+    </nav>
+
+    <button class="night-toggle" id="nightToggle" type="button" aria-pressed="false">◐ AFTER DARK</button>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
+            aria-expanded="false" aria-controls="primaryNavigation" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main>
+    <section class="page-hero workshop-hero">
+        <p class="eyebrow reveal">03 / CONSERVATION WORKSHOP</p>
+        <h1 class="reveal">Restore. Observe. <em>Understand.</em></h1>
+        <p class="page-description reveal">
+            Step behind the gallery wall and experiment with a simplified digital restoration simulation.
+            Adjust the image carefully, compare your choices and learn through interaction.
+        </p>
+    </section>
+
+    <section class="workshop-intro section">
+        <div class="section-number reveal">01</div>
+        <div class="section-content reveal">
+            <p class="eyebrow">THE CHALLENGE</p>
+            <h2>Can you reach a <em>100 restoration score?</em></h2>
+            <p>
+                Use the four controls below to improve the digital image. The score reacts to your
+                choices in real time. You can solve the challenge manually, reveal the target with
+                Auto Restore, or reset the experiment and try again.
+            </p>
+        </div>
+    </section>
+
+    <section class="restoration-lab" aria-label="Digital restoration simulation">
+        <div class="scanner reveal">
+            <div class="restoration-compare" id="restorationCompare">
+                <div class="restoration-art restoration-before" aria-hidden="true">
+                    <span>BEFORE</span>
+                </div>
+                <div class="restoration-after-wrap" id="restorationAfterWrap">
+                    <div class="restoration-art restoration-after" id="restorationArt" role="img"
+                         aria-label="Mona Lisa restored preview">
+                        <span>YOUR RESTORATION</span>
+                    </div>
+                </div>
+                <div class="comparison-divider" id="comparisonDivider" aria-hidden="true"><span>↔</span></div>
+            </div>
+
+            <label class="comparison-control" for="comparisonSlider">
+                <span>BEFORE / AFTER COMPARISON</span>
+                <input id="comparisonSlider" type="range" min="0" max="100" value="50" step="1">
+            </label>
+
+            <div class="restoration-complete" id="restorationComplete" aria-live="polite" hidden>
+                <span>✓</span>
+                <div><strong>RESTORATION COMPLETE</strong><small>Excellent balance. Your score reached 95 or higher.</small></div>
+            </div>
+
+            <div class="scan-line" aria-hidden="true"></div>
+            <div class="scan-data" aria-hidden="true">
+                <span>SCAN / LAD-01</span>
+                <span>LIVE IMAGE ANALYSIS</span>
+            </div>
+        </div>
+
+        <div class="restoration-controls reveal">
+            <p class="eyebrow">RESTORATION CONTROLS</p>
+            <h2 class="workshop-panel-title">Fine-tune the image.</h2>
+            <p class="workshop-panel-copy">
+                Small adjustments produce a more balanced result. Watch both the artwork and your score.
+            </p>
+
+            <div class="control">
+                <div class="control-title">
+                    <label for="brightness">BRIGHTNESS</label>
+                    <span id="brightnessValue">100%</span>
+                </div>
+                <input id="brightness" type="range" min="70" max="130" value="100" step="1">
+            </div>
+
+            <div class="control">
+                <div class="control-title">
+                    <label for="contrast">CONTRAST</label>
+                    <span id="contrastValue">100%</span>
+                </div>
+                <input id="contrast" type="range" min="70" max="140" value="100" step="1">
+            </div>
+
+            <div class="control">
+                <div class="control-title">
+                    <label for="saturation">SATURATION</label>
+                    <span id="saturationValue">100%</span>
+                </div>
+                <input id="saturation" type="range" min="60" max="140" value="100" step="1">
+            </div>
+
+            <div class="control">
+                <div class="control-title">
+                    <label for="sepia">SEPIA</label>
+                    <span id="sepiaValue">0%</span>
+                </div>
+                <input id="sepia" type="range" min="0" max="60" value="0" step="1">
+            </div>
+
+            <div class="restore-score" aria-live="polite">
+                <div>
+                    <span>RESTORATION SCORE</span>
+                    <p id="restoreMessage">Keep experimenting with the restoration controls.</p>
+                </div>
+                <strong><span id="restoreScore">0</span><small>/100</small></strong>
+            </div>
+
+            <div class="workshop-buttons">
+                <button class="primary-btn" id="autoRestore" type="button">AUTO RESTORE</button>
+                <button class="ghost-btn" id="resetRestore" type="button">RESET</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="conservation-note reveal"><span>IMPORTANT</span><p>This is a <strong>digital simulation</strong>, not a model of professional physical conservation. Real conservation is based on material analysis, documentation, reversibility and minimal intervention.</p></section>
+
+    <section class="diagnostic-lab reveal" aria-labelledby="diagnosticTitle">
+        <div class="ultra-section-heading"><div><p class="eyebrow">DIAGNOSTIC IMAGING LAB</p><h2 id="diagnosticTitle">See the same work four different ways.</h2></div><span>TEACHING SIMULATION</span></div>
+        <div class="diagnostic-layout">
+            <div class="diagnostic-image" id="diagnosticImage" data-mode="visible" role="img" aria-label="Mona Lisa diagnostic imaging simulation"></div>
+            <div class="diagnostic-controls">
+                <div class="diagnostic-mode-buttons"><button type="button" data-diagnostic-mode="visible">VISIBLE</button><button type="button" data-diagnostic-mode="raking">RAKING LIGHT</button><button type="button" data-diagnostic-mode="ultraviolet">UV</button><button type="button" data-diagnostic-mode="infrared">INFRARED</button></div>
+                <span class="audio-label">CURRENT MODE</span><strong id="diagnosticMode">VISIBLE LIGHT</strong><p id="diagnosticExplanation"></p>
+                <div class="conservation-note"><span>NOTE</span><p>These filters are educational visual simulations. Real technical imaging uses specialised equipment and scientific interpretation.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workshop-mastery reveal" id="workshopMastery" aria-labelledby="masteryTitle">
+        <div><p class="eyebrow">CONSERVATOR MASTERY</p><h2 id="masteryTitle">Complete both missions.</h2><p>Reach at least 95 in the restoration lab and answer every knowledge question correctly.</p></div>
+        <div class="mastery-stats"><div><span>RESTORATION</span><strong id="masteryRestoration">PENDING</strong></div><div><span>QUIZ</span><strong id="masteryQuiz">0/6</strong></div><div><span>BADGE</span><strong id="masteryStatus">COMPLETE BOTH MISSIONS</strong></div></div>
+    </section>
+
+    <section class="workshop-learning">
+        <div class="collection-header reveal">
+            <div>
+                <p class="eyebrow">WHAT THE SIMULATION SHOWS</p>
+                <h2>Interaction instead of passive reading.</h2>
+            </div>
+        </div>
+
+        <div class="feature-section workshop-feature-grid">
+            <article class="feature-card reveal">
+                <span class="card-number">01</span>
+                <div class="feature-icon" aria-hidden="true">◌</div>
+                <h3>Observe</h3>
+                <p>Every slider changes the image immediately, making cause and effect visible.</p>
+            </article>
+            <article class="feature-card reveal">
+                <span class="card-number">02</span>
+                <div class="feature-icon" aria-hidden="true">◇</div>
+                <h3>Experiment</h3>
+                <p>There is room to test different combinations before revealing the target values.</p>
+            </article>
+            <article class="feature-card reveal">
+                <span class="card-number">03</span>
+                <div class="feature-icon" aria-hidden="true">✓</div>
+                <h3>Reflect</h3>
+                <p>The score and quiz give immediate feedback and connect interaction to learning.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="quiz-section">
+        <div class="collection-header reveal">
+            <div>
+                <p class="eyebrow">MINI KNOWLEDGE CHECK</p>
+                <h2>What did you learn?</h2>
+            </div>
+        </div>
+
+        <div class="quiz-grid">
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 01</p>
+                <h3>Why is conservation important?</h3>
+                <p class="quiz-question">Choose the strongest reason.</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" type="button">To make every artwork look brand new</button>
+                    <button class="quiz-option" type="button" data-correct="true"
+                            data-feedback="Correct — conservation helps protect cultural heritage for future generations.">
+                        To protect cultural heritage for future generations
+                    </button>
+                    <button class="quiz-option" type="button">To change an artist's original style</button>
+                </div>
+                <p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 02</p>
+                <h3>What makes this workshop interactive?</h3>
+                <p class="quiz-question">Think about what happens when you move a slider.</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" type="button">The page only shows a long text</button>
+                    <button class="quiz-option" type="button" data-correct="true"
+                            data-feedback="Correct — the interface reacts immediately to the user's choices.">
+                        The image and score react to the user's choices
+                    </button>
+                    <button class="quiz-option" type="button">The page refreshes after every click</button>
+                </div>
+                <p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 03</p>
+                <h3>What is the purpose of Reset?</h3>
+                <p class="quiz-question">Consider the experiment process.</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" type="button" data-correct="true"
+                            data-feedback="Correct — Reset returns the controls to their starting values so the user can try again.">
+                        To return to the starting values and try again
+                    </button>
+                    <button class="quiz-option" type="button">To delete the artwork</button>
+                    <button class="quiz-option" type="button">To leave the website</button>
+                </div>
+                <p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 04</p><h3>Why document every intervention?</h3><p class="quiz-question">Think like a conservator.</p>
+                <div class="quiz-options"><button class="quiz-option" type="button">So future teams never know what changed</button><button class="quiz-option" type="button" data-correct="true" data-feedback="Correct — documentation creates a record of condition, materials and treatment decisions.">To create a record of condition and treatment decisions</button><button class="quiz-option" type="button">Only to make the report longer</button></div><p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 05</p><h3>What does minimal intervention mean?</h3><p class="quiz-question">Choose the safest principle.</p>
+                <div class="quiz-options"><button class="quiz-option" type="button" data-correct="true" data-feedback="Correct — conservators avoid unnecessary changes and preserve as much original material as possible.">Change only what is necessary to preserve the work</button><button class="quiz-option" type="button">Repaint everything until it looks new</button><button class="quiz-option" type="button">Replace old materials automatically</button></div><p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+            <article class="quiz-card reveal">
+                <p class="eyebrow">QUESTION 06</p><h3>Why should treatments be reversible when possible?</h3><p class="quiz-question">Think about future research.</p>
+                <div class="quiz-options"><button class="quiz-option" type="button">So the artwork changes every year</button><button class="quiz-option" type="button" data-correct="true" data-feedback="Correct — future conservators can remove or revise a treatment if better methods become available.">So future conservators can remove or revise the treatment</button><button class="quiz-option" type="button">So visitors can edit the artwork</button></div><p class="quiz-result" aria-live="polite">Choose an answer.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="final-cta workshop-cta">
+        <div class="reveal">
+            <p class="eyebrow">CONSERVATION LAB COMPLETE</p>
+            <h2>Return to the galleries.</h2>
+            <p>Use what you noticed here to inspect the artworks more carefully.</p>
+            <a href="exhibitions.html" class="primary-btn">BACK TO EXHIBITIONS →</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>LAD / WORKSHOP</div>
+    <div>INTERACTIVE CONSERVATION LAB</div>
+    <div>2026</div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/ultra.js"></script>
+</body>
+</html>
